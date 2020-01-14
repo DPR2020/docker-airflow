@@ -33,6 +33,7 @@ RUN set -ex \
         libssl-dev \
         libffi-dev \
         libpq-dev \
+        unixodbc-dev \
         git \
     ' \
     && apt-get update -yqq \
