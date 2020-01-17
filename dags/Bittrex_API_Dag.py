@@ -50,7 +50,7 @@ def update_snowflake_v3_markets():
     output = df.to_csv(index=False, encoding="utf-8", quoting=csv.QUOTE_NONNUMERIC)
     filepath = 'bittrex_api/v3/markets.csv'
     print("Writing to Azure blob: " + filepath)
-    blobService.create_blob_from_text('snowflake', filepath, output)
+    blobService.create_blob_from_text(containerName, filepath, output)
     # return df
 
 def update_snowflake_v1_markets():
@@ -60,7 +60,7 @@ def update_snowflake_v1_markets():
     output = df.to_csv(index=False, encoding="utf")
     filepath = 'bittrex_api/v1/markets.csv'
     print("Writing to Azure blob: " + filepath)
-    blobService.create_blob_from_text('snowflake', filepath, output)
+    blobService.create_blob_from_text(containerName, filepath, output)
 
 update_v3_markets = PythonOperator(
     task_id='update_snowflake_v3_markets',
